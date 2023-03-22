@@ -14,7 +14,19 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
   if (url === "/message" && method === "POST") {
-    fs.writeFileSync("message.txt", "Dummy text in txt file - content"); //will create file in the same folder
+    const body = [];
+    //get req data - event listener
+    req.on("data", (chunk) => {
+      console.log(chunk);
+      body.push(chunk); //push method change body object - inserting new element bin body array
+    });
+    req.on("end", () => {
+      //buffer the chunks
+      const parsedBody = Buffer.concat(body).toString();
+      //   console.log(parsedBody);
+      const message = parsedBody.split("=")[1];
+      fs.writeFileSync("message.txt", message); //will create file in the same folder
+    });
     res.statusCode = 302;
     res.setHeader("Location", "/");
     return res.end();
