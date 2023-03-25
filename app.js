@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   console.log("In another middleware");
 
   // sending response
-  res.wrtie;
+  res.send("<h1>Response from the server!</h1>");
 });
 
 const server = http.createServer(app); // as handler has requesthandler funciton assigned to it.
