@@ -1,11 +1,22 @@
 //package imports
 const http = require("http");
 
-//file imports
-const routes = require("./routes");
+const express = require("express");
 
-console.log(routes.someText);
+const app = express();
 
-const server = http.createServer(routes.handler); // as handler has requesthandler funciton assigned to it.
+//use allows to add us new middleware function
+app.use((req, res, next) => {
+  console.log("In the middleware");
+  next(); // allows the request to continue to next middleware in line
+});
+app.use((req, res, next) => {
+  console.log("In another middleware");
+
+  // sending response
+  res.wrtie;
+});
+
+const server = http.createServer(app); // as handler has requesthandler funciton assigned to it.
 
 server.listen(3000);
