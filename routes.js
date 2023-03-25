@@ -19,10 +19,11 @@ const requestHandler = (req, res) => {
     const body = [];
     //get req data -data event
     req.on("data", (chunk) => {
-      console.log(chunk);
+      // console.log(chunk);
       body.push(chunk); //push method change body object - inserting new element bin body array
     });
-    req.on("end", () => {
+    //below return keyword neccesary before req.on otherwise setHeader at line 36 will show wrror in console
+    return req.on("end", () => {
       //end event
       //buffer the chunks --event listener
       const parsedBody = Buffer.concat(body).toString();
@@ -37,6 +38,7 @@ const requestHandler = (req, res) => {
       });
     });
   }
+
   res.setHeader("Content-Type", "text/html");
   res.write("<html>");
   res.write("<head><title>My First Page</title></head>");
