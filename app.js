@@ -1,5 +1,5 @@
 //package imports
-const http = require("http");
+// const http = require("http");
 
 const express = require("express");
 
@@ -17,6 +17,8 @@ app.use((req, res, next) => {
   res.send("<h1>Response from the server!</h1>");
 });
 
-const server = http.createServer(app); // as handler has requesthandler funciton assigned to it.
+// const server = http.createServer(app); // as handler has requesthandler funciton assigned to it.
 
-server.listen(3000);
+// server.listen(3000);
+
+app.listen(3000); //shortcut for server removing above 2 lines
