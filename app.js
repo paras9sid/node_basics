@@ -1,3 +1,5 @@
+const path = require("path");
+
 //package imports
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -17,7 +19,9 @@ app.use(shopRoutes);
 
 //adding 404 error page for any route we cont have written
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Page not found</h1>");
+  // res.status(404).send("<h1>Page not found</h1>");
+  //adding 404.html page
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html")); // no need to set ../ as we are in the same folder
 });
 
 app.listen(3000); //shortcut for server removing above 2 lines
