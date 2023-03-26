@@ -3,12 +3,14 @@ const path = require("path");
 //handle creation of product
 const express = require("express");
 
+const rootDir = require("../util/path");
+
 const router = express.Router();
 
 // -- /admin/add-product -> GET req
 router.get("/add-product", (req, res, next) => {
   //path used
-  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
+  res.sendFile(path.join(rootDir, "views", "add-product.html"));
 });
 
 // -- /admin/add-product -> POST req
