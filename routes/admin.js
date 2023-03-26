@@ -1,3 +1,5 @@
+const path = require("path");
+
 //handle creation of product
 const express = require("express");
 
@@ -5,11 +7,8 @@ const router = express.Router();
 
 // -- /admin/add-product -> GET req
 router.get("/add-product", (req, res, next) => {
-  console.log("In product middleware");
-  // sending response  -- path is admin/add-product otherwise response send will throw error
-  res.send(
-    '<form action="/admin/add-product" method="POST"><input type="text" name="title"/><button type="submit">Add Product</button></form>'
-  );
+  //path used
+  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
 });
 
 // -- /admin/add-product -> POST req
