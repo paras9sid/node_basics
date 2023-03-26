@@ -14,6 +14,9 @@ const app = express();
 // extended false objetc remove warning - body-parser deprecated undefined extended: provide extended option app.js:8:20
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//new middleware for accessing static files via express
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use("/admin", adminRoutes); //routes with /admin in it only will go into adminRoutes - path filtered
 app.use(shopRoutes);
 
