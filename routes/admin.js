@@ -7,6 +7,8 @@ const rootDir = require("../util/path");
 
 const router = express.Router();
 
+const products = [];
+
 // -- /admin/add-product -> GET req
 router.get("/add-product", (req, res, next) => {
   //path used
@@ -18,8 +20,11 @@ router.get("/add-product", (req, res, next) => {
 router.post("/add-product", (req, res, next) => {
   //for resolving error [Object: null prototype]  in console of req.body
   const obj = JSON.parse(JSON.stringify(req.body));
-  console.log(obj);
+  // console.log(obj);
+  products.push({ title: obj.title });
   res.redirect("/");
 });
 
-module.exports = router;
+// module.exports = router;
+exports.routes = router;
+exports.products = products;
