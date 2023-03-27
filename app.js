@@ -10,6 +10,10 @@ const shopRoutes = require("./routes/shop");
 
 const app = express();
 
+//setting global config values
+app.set("view engine", "pug");
+app.set("views", "views");
+
 //registering the parser - add top before all the middlewares route
 // extended false objetc remove warning - body-parser deprecated undefined extended: provide extended option app.js:8:20
 app.use(bodyParser.urlencoded({ extended: false }));
