@@ -3,19 +3,11 @@ const path = require("path");
 //package imports
 const express = require("express");
 const bodyParser = require("body-parser");
-const expressHbs = require("express-handlebars");
 
 const app = express();
 
-app.engine(
-  "hbs",
-  expressHbs({
-    layoutsDir: "views/layouts/",
-    defaultLayout: "main-layout",
-    extname: "hbs",
-  })
-); //expressHbs as a function used
-app.set("view engine", "hbs"); //pug changed to handlebars
+//ejs engine using now
+app.set("view engine", "ejs"); //pug changed to handlebars
 app.set("views", "views");
 
 //file imports
