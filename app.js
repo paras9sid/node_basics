@@ -29,7 +29,9 @@ app.use((req, res, next) => {
   // res.status(404).send("<h1>Page not found</h1>");
   //adding 404.html page
   // res.status(404).sendFile(path.join(__dirname, "views", "404.html")); // no need to set ../ as we are in the same folder
-  res.status(404).render("404", { pageTitle: "Page not found!" });
+  res
+    .status(404)
+    .render("404", { pageTitle: "Page not found!", path: "Error" }); //path for resolving path not defined error
 });
 
 app.listen(3000); //shortcut for server removing above 2 lines
