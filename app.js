@@ -3,11 +3,12 @@ const path = require("path");
 //package imports
 const express = require("express");
 const bodyParser = require("body-parser");
+const expressHbs = require("express-handlebars");
 
 const app = express();
 
-//setting global config values
-app.set("view engine", "pug");
+app.engine("hbs", expressHbs()); //expressHbs as a function used
+app.set("view engine", "hbs"); //pug changed to handlebars
 app.set("views", "views");
 
 //file imports
