@@ -13,6 +13,7 @@ app.set("views", "views");
 //file imports
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+const errorController = require("./controllers/error");
 
 //registering the parser - add top before all the middlewares route
 // extended false objetc remove warning - body-parser deprecated undefined extended: provide extended option app.js:8:20
@@ -25,13 +26,6 @@ app.use("/admin", adminRoutes); //routes with /admin in it only will go into adm
 app.use(shopRoutes);
 
 //adding 404 error page for any route we cont have written
-app.use((req, res, next) => {
-  // res.status(404).send("<h1>Page not found</h1>");
-  //adding 404.html page
-  // res.status(404).sendFile(path.join(__dirname, "views", "404.html")); // no need to set ../ as we are in the same folder
-  res
-    .status(404)
-    .render("404", { pageTitle: "Page not found!", path: "Error" }); //path for resolving path not defined error
-});
+app.use(errorController.get404);
 
 app.listen(3000); //shortcut for server removing above 2 lines
