@@ -7,10 +7,17 @@ exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render("shop/product-list", {
       prods: products,
-      pageTitle: "Add Products",
+      pageTitle: "All Products",
       path: "/products",
     });
   });
+};
+
+//gtting one product by unique id
+exports.getProduct = (req, res, next) => {
+  const prodId = req.params.productId;
+  console.log(prodId);
+  res.redirect("/");
 };
 
 exports.getIndex = (req, res, next) => {
