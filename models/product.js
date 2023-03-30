@@ -25,6 +25,7 @@ const getProductsFromFile = (cb) => {
   });
 };
 
+//product details model
 module.exports = class Product {
   constructor(title, imageUrl, price, description) {
     this.title = title;
@@ -33,7 +34,10 @@ module.exports = class Product {
     this.description = description;
   }
 
+  //saving above product info
   save() {
+    //assigning id for the product unique id
+    this.id = Math.random().toString();
     getProductsFromFile((products) => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (err) => {
@@ -43,6 +47,7 @@ module.exports = class Product {
     // products.push(this);
   }
 
+  //fetching all product details
   static fetchAll(cb) {
     getProductsFromFile(cb);
   }
